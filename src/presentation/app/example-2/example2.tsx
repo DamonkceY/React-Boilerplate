@@ -7,12 +7,12 @@ const Example2 = () => {
 	const navigate = useNavigate();
 	return (
 		<div>
-      example 2<button onClick={() => navigate(PATHS.EXAMPLE1)}>to example 1</button>
+			example 2<button onClick={() => navigate(PATHS.EXAMPLE1)}>to example 1</button>
 			<button onClick={() => navigate(PATHS.EXAMPLE3.INDEX + PATHS.EXAMPLE3.NESTED1)}>
-        to child 1
+				to child 1
 			</button>
 			<button onClick={() => navigate(PATHS.EXAMPLE3.INDEX + PATHS.EXAMPLE3.NESTED2)}>
-        to child 2
+				to child 2
 			</button>
 		</div>
 	);

@@ -6,9 +6,9 @@ const Child1 = () => {
 	const navigate = useNavigate();
 	return (
 		<div>
-      child1
+			child1
 			<button onClick={() => navigate(PATHS.EXAMPLE3.INDEX + PATHS.EXAMPLE3.NESTED2)}>
-        to child 2
+				to child 2
 			</button>
 			<button onClick={() => navigate(PATHS.EXAMPLE1)}>to example 1</button>
 			<button onClick={() => navigate(PATHS.EXAMPLE2)}>to example 2</button>

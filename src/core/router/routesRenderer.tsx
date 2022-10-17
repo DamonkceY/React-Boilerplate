@@ -24,7 +24,7 @@ export const routesRenderer = (routesList: Array<RoutesType>) => {
 };
 
 type Props = {
-  _: RoutesType;
+	_: RoutesType;
 };
 const RouteMiddleware = ({ _ }: Props) => {
 	const location = useLocation();
@@ -81,18 +81,18 @@ const RouteMiddleware = ({ _ }: Props) => {
 	const checkWidth = () => {
 		let condition: boolean;
 		switch (_.displayType) {
-		case 'MOBILE':
-			condition = width <= MOBILE_BREAKPOINT;
-			break;
-		case 'TABLET':
-			condition = width > MOBILE_BREAKPOINT && width <= TABLET_BREAKPOINT;
-			break;
-		case 'DESKTOP':
-			condition = width > TABLET_BREAKPOINT;
-			break;
-		case 'ALL':
-		default:
-			condition = true;
+			case 'MOBILE':
+				condition = width <= MOBILE_BREAKPOINT;
+				break;
+			case 'TABLET':
+				condition = width > MOBILE_BREAKPOINT && width <= TABLET_BREAKPOINT;
+				break;
+			case 'DESKTOP':
+				condition = width > TABLET_BREAKPOINT;
+				break;
+			case 'ALL':
+			default:
+				condition = true;
 		}
 
 		return condition;
@@ -116,7 +116,7 @@ const RouteMiddleware = ({ _ }: Props) => {
 				? getElement()
 				: passport.requestIsFinished && (
 					<div>{passport.userIsConnected ? getElement() : escapeRoute()}</div>
-				)}
+				  )}
 		</div>
 	);
 };

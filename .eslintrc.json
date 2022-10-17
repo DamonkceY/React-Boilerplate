@@ -38,7 +38,8 @@
         "no-duplicate-imports": "error",
         "indent": [
             "error",
-            "tab"
+            "tab",
+            { "SwitchCase": 1 }
         ],
         "linebreak-style": [
             "error",

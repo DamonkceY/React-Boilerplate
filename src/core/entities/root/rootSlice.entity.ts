@@ -1,4 +1,4 @@
 export type RootSliceStatedEntity = {
-  isRootLoading: boolean;
-  deviceWidth: number;
+	isRootLoading: boolean;
+	deviceWidth: number;
 };
