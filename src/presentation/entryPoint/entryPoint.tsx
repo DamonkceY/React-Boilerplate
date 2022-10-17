@@ -14,7 +14,7 @@ const EntryPoint = () => {
 
 	React.useEffect(() => {
 		// Trigger the listener
-		trackDeviceWidth((width: number) => dispatch(setDeviceWidth(width)));
+	trackDeviceWidth((width: number) => dispatch(setDeviceWidth(width)));
 		//
 
 		// Clean-up function
