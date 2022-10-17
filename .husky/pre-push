@@ -5,10 +5,10 @@ printf "\n>> Pre-push Hook: Checking branch name...\n"
 
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
-#if [ "$BRANCH" = "master" ]; then
-#  printf "\nCannot push to remote master branch, please create your own branch and initiate a Merge Request.\n"
-#  exit 1
-#fi
+if [ "$BRANCH" = "master" ]; then
+  printf "\nCannot push to remote master branch, please create your own branch and initiate a Merge Request.\n"
+  exit 1
+fi
 
 printf "\n>> Finished checking branch name.\n"
 

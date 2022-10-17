@@ -33,25 +33,6 @@
         "prettier"
     ],
     "rules": {
-        "camelcase": "error",
-        "spaced-comment": "error",
-        "no-duplicate-imports": "error",
-        "indent": [
-            "error",
-            "tab",
-            { "SwitchCase": 1 }
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "semi": [
-            "error",
-            "always"
-        ]
+        "prettier/prettier": ["error"]
     }
 }
