@@ -1,0 +1,24 @@
+// All imports go here
+@import "./assets/fonts/index";
+//
+
+body {
+  margin: unset;
+  padding: unset;
+}
+
+* {
+  font-family: 'Lato-Regular', sans-serif;
+  font-size: 16px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+
+  //// UnComment below code to disable text select on all platforms !
+  //-webkit-touch-callout: none;
+  //-webkit-user-select: none;
+  //-khtml-user-select: none;
+  //-moz-user-select: none;
+  //-ms-user-select: none;
+  //user-select: none;
+}

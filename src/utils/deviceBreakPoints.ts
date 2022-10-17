@@ -1,0 +1,5 @@
+
+export const MOBILE_BREAKPOINT = 480;
+export const TABLET_BREAKPOINT = 768;
+export const SMALL_SCREEN_BREAKPOINT = 1024;
+export const LARGE_SCREEN_BREAKPOINT = 1200;
