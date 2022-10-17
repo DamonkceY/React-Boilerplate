@@ -7,6 +7,7 @@ import {Provider} from 'react-redux';
 import './core/i18n';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+
 	<Provider store={store}>
 		<EntryPoint/>
 	</Provider>
