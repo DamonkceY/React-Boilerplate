@@ -1,6 +1,6 @@
 import React from 'react';
-import {RoutesType} from '../entities/routes.entity';
-import {PATHS} from './paths';
+import { RoutesType } from '../entities/routes.entity';
+import { PATHS } from './paths';
 
 const Home = React.lazy(() => import('../../presentation/app/home/home'));
 const Example1 = React.lazy(() => import('../../presentation/app/example-1/example1'));

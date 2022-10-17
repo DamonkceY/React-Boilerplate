@@ -1,13 +1,9 @@
-import axios, {
-	AxiosInstance,
-	AxiosResponse,
-	AxiosError
-} from 'axios';
-import {TOKEN_KEY} from '../../../utils/localStorageKeys';
-import {BASE_URL, TEST_UPDATE_TOKEN} from '../endpoints';
-import {store} from '../../store';
-import {setRootLoading} from '../../store/modules/rootSlice';
-import {ExecutorInterface, QueueItem} from '../../entities/interceptor.entity';
+import axios, { AxiosInstance, AxiosResponse, AxiosError } from 'axios';
+import { TOKEN_KEY } from '../../../utils/localStorageKeys';
+import { BASE_URL, TEST_UPDATE_TOKEN } from '../endpoints';
+import { store } from '../../store';
+import { setRootLoading } from '../../store/modules/rootSlice';
+import { ExecutorInterface, QueueItem } from '../../entities/interceptor.entity';
 
 class SingletonInterceptor {
 	private static instance: SingletonInterceptor;
@@ -46,7 +42,7 @@ class SingletonInterceptor {
 				SingletonInterceptor.requestsQueue.push({
 					config,
 					resolve,
-					reject
+					reject,
 				});
 			} else {
 				store.dispatch(setRootLoading(true));
@@ -55,42 +51,46 @@ class SingletonInterceptor {
 					method: config.method,
 					data: config.data,
 					params: config.params,
-				}).then((res: AxiosResponse) => {
-					store.dispatch(setRootLoading(false));
-					resolve(res);
-				}).catch((err: AxiosError) => {
-					store.dispatch(setRootLoading(false));
-					if (err.response?.status === 403) {
-						if (!SingletonInterceptor.isRefreshingToken) {
-							SingletonInterceptor.isRefreshingToken = true;
-							SingletonInterceptor.requestsQueue.push({
-								config,
-								resolve,
-								reject
-							});
-							store.dispatch(setRootLoading(true));
-							this.refreshMyToken().then((res: AxiosResponse) => {
-								store.dispatch(setRootLoading(false));
-								SingletonInterceptor.isRefreshingToken = false;
-								localStorage.setItem(TOKEN_KEY, res.data.token);
-								this.retryApiCalls();
-							}).catch((err: AxiosError) => {
-								store.dispatch(setRootLoading(false));
-								SingletonInterceptor.isRefreshingToken = false;
-								this.abortAllRequests();
-							});
+				})
+					.then((res: AxiosResponse) => {
+						store.dispatch(setRootLoading(false));
+						resolve(res);
+					})
+					.catch((err: AxiosError) => {
+						store.dispatch(setRootLoading(false));
+						if (err.response?.status === 403) {
+							if (!SingletonInterceptor.isRefreshingToken) {
+								SingletonInterceptor.isRefreshingToken = true;
+								SingletonInterceptor.requestsQueue.push({
+									config,
+									resolve,
+									reject,
+								});
+								store.dispatch(setRootLoading(true));
+								this.refreshMyToken()
+									.then((res: AxiosResponse) => {
+										store.dispatch(setRootLoading(false));
+										SingletonInterceptor.isRefreshingToken = false;
+										localStorage.setItem(TOKEN_KEY, res.data.token);
+										this.retryApiCalls();
+									})
+									.catch((err: AxiosError) => {
+										store.dispatch(setRootLoading(false));
+										SingletonInterceptor.isRefreshingToken = false;
+										this.abortAllRequests();
+									});
+							} else {
+								SingletonInterceptor.requestsQueue.push({
+									config,
+									resolve,
+									reject,
+								});
+							}
 						} else {
-							SingletonInterceptor.requestsQueue.push({
-								config,
-								resolve,
-								reject
-							});
+							reject(`Request failed with status: ${err.response?.status}`);
+							this.clearQueue();
 						}
-					} else {
-						reject(`Request failed with status: ${err.response?.status}`);
-						this.clearQueue();
-					}
-				});
+					});
 			}
 		});
 	}
@@ -100,7 +100,9 @@ class SingletonInterceptor {
 			SingletonInterceptor.interceptor({
 				url: BASE_URL + TEST_UPDATE_TOKEN,
 				method: 'get',
-			}).then(res => resolve(res)).catch(err => reject(err));
+			})
+				.then((res) => resolve(res))
+				.catch((err) => reject(err));
 		});
 	};
 
@@ -122,9 +124,11 @@ class SingletonInterceptor {
 	private retryApiCalls = () => {
 		store.dispatch(setRootLoading(true));
 		Promise.all(
-			SingletonInterceptor.requestsQueue.map(_ => (
-				this.executeRequest(_.config).then((res: AxiosResponse) => _.resolve(res.data)).catch((err: AxiosError) => _.reject(err))
-			))
+			SingletonInterceptor.requestsQueue.map((_) =>
+				this.executeRequest(_.config)
+					.then((res: AxiosResponse) => _.resolve(res.data))
+					.catch((err: AxiosError) => _.reject(err)),
+			),
 		).then(() => {
 			this.clearQueue();
 			store.dispatch(setRootLoading(false));
@@ -133,4 +137,3 @@ class SingletonInterceptor {
 }
 
 export default SingletonInterceptor;
-

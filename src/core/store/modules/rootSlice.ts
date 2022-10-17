@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../';
-import {RootSliceStatedEntity} from '../../entities/root/rootSlice.entity';
+import { RootSliceStatedEntity } from '../../entities/root/rootSlice.entity';
 
 const initialState: RootSliceStatedEntity = {
 	isRootLoading: false,

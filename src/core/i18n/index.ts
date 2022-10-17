@@ -7,7 +7,7 @@ import ar from './languages/ar';
 const resources = {
 	en,
 	fr,
-	ar
+	ar,
 };
 
 i18n.use(initReactI18next)?.init({

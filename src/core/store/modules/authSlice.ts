@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../';
-import {AuthSliceStateEntity, UserEntity} from '../../entities/auth/authSlice.entity';
+import { AuthSliceStateEntity, UserEntity } from '../../entities/auth/authSlice.entity';
 
 const initialState: AuthSliceStateEntity = {
 	connectedUser: undefined,

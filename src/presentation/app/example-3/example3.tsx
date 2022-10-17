@@ -1,12 +1,9 @@
 import React from 'react';
 import './example3.scss';
-import {Outlet} from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 const Example3 = () => {
-
-	return (
-		<Outlet/>
-	);
+	return <Outlet />;
 };
 
 export default Example3;

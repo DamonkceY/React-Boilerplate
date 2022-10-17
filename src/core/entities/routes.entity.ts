@@ -11,4 +11,4 @@ export type RoutesType = {
   children?: Array<RoutesType>;
   fallback?: string;
   //
-}
+};
