@@ -115,7 +115,7 @@ const RouteMiddleware = ({ _ }: Props) => {
 			{!_.isPrivate
 				? getElement()
 				: passport.requestIsFinished && (
-					<div>{passport.userIsConnected ? getElement() : escapeRoute()}</div>
+						<div>{passport.userIsConnected ? getElement() : escapeRoute()}</div>
 				  )}
 		</div>
 	);
