@@ -1,6 +1,6 @@
 export const PATHS = {
 	HOME: {
-		INDEX: '/home',
+		INDEX: '/home/',
 		FALLBACK: '/home',
 	},
 	EXAMPLE1: '/1',

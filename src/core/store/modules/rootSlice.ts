@@ -5,6 +5,7 @@ import { RootSliceStatedEntity } from '../../entities/root/rootSlice.entity';
 const initialState: RootSliceStatedEntity = {
 	isRootLoading: false,
 	deviceWidth: document.body.clientWidth,
+	currentLanguage: 'en',
 };
 
 export const rootSlice = createSlice({

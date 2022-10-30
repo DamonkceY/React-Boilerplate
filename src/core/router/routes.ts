@@ -17,6 +17,12 @@ const RoutePaths: Array<RoutesType> = [
 		isPrivate: false,
 	},
 	{
+		path: PATHS.HOME.INDEX,
+		component: Home,
+		displayType: 'ALL',
+		isPrivate: false,
+	},
+	{
 		path: PATHS.EXAMPLE1,
 		component: Example1,
 		displayType: 'ALL',
